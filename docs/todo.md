@@ -18,7 +18,7 @@
 
   `npx nuxi init` で Nuxt 3 プロジェクト作成。TypeScript strict 設定、ESLint/Prettier、Node バージョン固定（package.json `engines`）。`/` `/login` のダミーページが起動するところまで。
 
-- [ ] **W1-02: Tailwind CSS 導入 + デザイントークン整備**
+- [x] **W1-02: Tailwind CSS 導入 + デザイントークン整備**
 
   Tailwind 導入、Noto Sans JP 読み込み、ベージュ／淡いゴールド基調のカラーパレットを `tailwind.config.ts` に定義。共通レイアウト（ヘッダー・サイドナビ）のスケルトン作成。
 
