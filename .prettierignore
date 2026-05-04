@@ -1,0 +1,7 @@
+node_modules
+.nuxt
+.output
+dist
+public
+package-lock.json
+docs/Scaling_Salon_Hospitality.pdf
