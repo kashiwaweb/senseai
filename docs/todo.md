@@ -14,7 +14,7 @@
 
 ゴール: Nuxt 骨組み + 手動テキスト入力で AI が 7 ステップ分析する最小動作（W1-14 で達成）。
 
-- [ ] **W1-01: Nuxt 3 プロジェクト初期化（TypeScript）**
+- [x] **W1-01: Nuxt 3 プロジェクト初期化（TypeScript）**
 
   `npx nuxi init` で Nuxt 3 プロジェクト作成。TypeScript strict 設定、ESLint/Prettier、Node バージョン固定（package.json `engines`）。`/` `/login` のダミーページが起動するところまで。
 
@@ -28,7 +28,7 @@
 
 - [ ] **W1-04: 環境変数テンプレート（.env.example）作成**
 
-  architecture.md §7 の全環境変数を `.env.example` に列挙：AUTH*PASSWORD / AUTH_SESSION_SECRET / GROQ_API_KEY / GEMINI_API_KEY / ANTHROPIC_API_KEY / LLM_PROVIDER / TURSO*\_ / R2\_\_。`runtimeConfig` への配線も含む。
+  architecture.md §7 の全環境変数を `.env.example` に列挙：`AUTH_PASSWORD` / `AUTH_SESSION_SECRET` / `GROQ_API_KEY` / `GEMINI_API_KEY` / `ANTHROPIC_API_KEY` / `LLM_PROVIDER` / `TURSO_*` / `R2_*`。`runtimeConfig` への配線も含む。
 
 - [ ] **W1-05: Turso (libSQL) + Drizzle ORM セットアップ**
 
