@@ -5,3 +5,6 @@ dist
 public
 package-lock.json
 docs/Scaling_Salon_Hospitality.pdf
+
+# Drizzle 自動生成物（マイグレーション SQL とスナップショット）
+server/db/migrations/

@@ -34,7 +34,7 @@
 
   Turso 無料枠で DB を作成、`@libsql/client` + `drizzle-orm` を導入。ローカルは SQLite ファイル、本番は Turso URL に切替できる接続レイヤを `server/db/client.ts` に実装。
 
-- [ ] **W1-06: データモデルのスキーマ定義（5テーブル）**
+- [x] **W1-06: データモデルのスキーマ定義（5テーブル）**
 
   architecture.md §5 に従い Drizzle で Salon / Staff / Session / TopProfile / Diagnosis を定義。FK・インデックス（staff.salon_id、session.staff_id、diagnosis.session_id）も設定。`drizzle-kit generate` でマイグレーション生成。
 
