@@ -30,7 +30,7 @@
 
   architecture.md §7 の全環境変数を `.env.example` に列挙：`AUTH_PASSWORD` / `AUTH_SESSION_SECRET` / `GROQ_API_KEY` / `GEMINI_API_KEY` / `ANTHROPIC_API_KEY` / `LLM_PROVIDER` / `TURSO_*` / `R2_*`。`runtimeConfig` への配線も含む。
 
-- [ ] **W1-05: Turso (libSQL) + Drizzle ORM セットアップ**
+- [x] **W1-05: Turso (libSQL) + Drizzle ORM セットアップ**
 
   Turso 無料枠で DB を作成、`@libsql/client` + `drizzle-orm` を導入。ローカルは SQLite ファイル、本番は Turso URL に切替できる接続レイヤを `server/db/client.ts` に実装。
 
