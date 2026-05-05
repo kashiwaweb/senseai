@@ -38,7 +38,7 @@
 
   architecture.md §5 に従い Drizzle で Salon / Staff / Session / TopProfile / Diagnosis を定義。FK・インデックス（staff.salon_id、session.staff_id、diagnosis.session_id）も設定。`drizzle-kit generate` でマイグレーション生成。
 
-- [ ] **W1-07: マイグレーション実行・初期データ投入スクリプト**
+- [x] **W1-07: マイグレーション実行・初期データ投入スクリプト**
 
   マイグレーション実行コマンドを `package.json` script 化。PoC 用の単一 Salon と最低限の seed（管理用 Salon レコード）を投入する `scripts/seed.ts` を作成。
 
