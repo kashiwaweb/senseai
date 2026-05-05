@@ -22,7 +22,7 @@
 
   Tailwind 導入、Noto Sans JP 読み込み、ベージュ／淡いゴールド基調のカラーパレットを `tailwind.config.ts` に定義。共通レイアウト（ヘッダー・サイドナビ）のスケルトン作成。
 
-- [ ] **W1-03: ディレクトリ構成・コーディング規約決定**
+- [x] **W1-03: ディレクトリ構成・コーディング規約決定**
 
   `pages/` `components/` `composables/` `server/api/` `server/lib/` `server/lib/prompts/` `server/db/` `shared/schemas/` などの構成を確定。命名規則・import エイリアス（`~/`, `#shared`）を README に明記。
 

@@ -17,9 +17,7 @@ const navItems = [
     >
       <NuxtLink to="/" class="flex items-baseline gap-3">
         <span class="text-xl font-bold text-gold-600">senseai</span>
-        <span class="text-xs text-ink-500 hidden sm:inline">
-          トップの感覚を、全員の技術に。
-        </span>
+        <span class="text-xs text-ink-500 hidden sm:inline"> トップの感覚を、全員の技術に。 </span>
       </NuxtLink>
       <div class="text-sm text-ink-500">
         <!-- W1-08 でログアウトボタン -->

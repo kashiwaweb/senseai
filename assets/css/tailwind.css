@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        @apply bg-cream-50 text-ink-900 font-sans;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
+  body {
+    @apply bg-cream-50 text-ink-900 font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
