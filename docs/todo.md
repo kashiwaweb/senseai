@@ -26,7 +26,7 @@
 
   `pages/` `components/` `composables/` `server/api/` `server/lib/` `server/lib/prompts/` `server/db/` `shared/schemas/` などの構成を確定。命名規則・import エイリアス（`~/`, `#shared`）を README に明記。
 
-- [ ] **W1-04: 環境変数テンプレート（.env.example）作成**
+- [x] **W1-04: 環境変数テンプレート（.env.example）作成**
 
   architecture.md §7 の全環境変数を `.env.example` に列挙：`AUTH_PASSWORD` / `AUTH_SESSION_SECRET` / `GROQ_API_KEY` / `GEMINI_API_KEY` / `ANTHROPIC_API_KEY` / `LLM_PROVIDER` / `TURSO_*` / `R2_*`。`runtimeConfig` への配線も含む。
 
