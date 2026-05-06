@@ -8,6 +8,14 @@ const navItems = [
   { to: '/diagnoses', label: '診断結果' },
   { to: '/settings', label: '設定' },
 ]
+
+const { clear: clearSession } = useUserSession()
+
+async function logout() {
+  await $fetch('/api/auth/logout', { method: 'POST' })
+  await clearSession()
+  await navigateTo('/login')
+}
 </script>
 
 <template>
@@ -19,9 +27,13 @@ const navItems = [
         <span class="text-xl font-bold text-gold-600">senseai</span>
         <span class="text-xs text-ink-500 hidden sm:inline"> トップの感覚を、全員の技術に。 </span>
       </NuxtLink>
-      <div class="text-sm text-ink-500">
-        <!-- W1-08 でログアウトボタン -->
-      </div>
+      <button
+        type="button"
+        class="text-sm text-ink-600 hover:text-ink-900 transition-colors"
+        @click="logout"
+      >
+        ログアウト
+      </button>
     </header>
 
     <div class="flex flex-1">

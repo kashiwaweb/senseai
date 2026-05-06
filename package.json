@@ -28,6 +28,7 @@
     "drizzle-orm": "^0.45.2",
     "eslint": "^10.3.0",
     "nuxt": "^4.4.4",
+    "nuxt-auth-utils": "^0.5.29",
     "vue": "^3.5.33",
     "vue-router": "^5.0.6"
   },
