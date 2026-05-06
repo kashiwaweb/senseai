@@ -42,11 +42,11 @@
 
   マイグレーション実行コマンドを `package.json` script 化。PoC 用の単一 Salon と最低限の seed（管理用 Salon レコード）を投入する `scripts/seed.ts` を作成。
 
-- [ ] **W1-08: 共有パスワード認証（nuxt-auth-utils）実装**
+- [x] **W1-08: 共有パスワード認証（nuxt-auth-utils）実装**
 
   `nuxt-auth-utils` を導入し、`POST /api/auth/login`（AUTH_PASSWORD と一致でセッション発行）/ `POST /api/auth/logout` を実装。サーバーミドルウェアで `/login` 以外は未認証アクセスを弾く。
 
-- [ ] **W1-09: ログイン画面 `/login` 実装**
+- [x] **W1-09: ログイン画面 `/login` 実装**
 
   screens.md §3.1 の通り、パスワード入力 1 個 + ログインボタン。失敗時は「パスワードが違います」のみ。成功で `/` へリダイレクト。
 
@@ -54,7 +54,7 @@
 
   サマリカード4つ（スタッフ数 / セッション数 / 「型」バージョン / 診断回数）と CTA ボタン3つを配置。データはまずダミーで OK、API は後続タスクで配線。
 
-- [ ] **W1-11: LLM プロバイダー抽象化レイヤ実装**
+- [x] **W1-11: LLM プロバイダー抽象化レイヤ実装**
 
   `server/lib/llm.ts` に `LLMProvider` interface を定義し、Gemini 2.5 Flash 実装と Claude（Haiku/Sonnet）実装を作成。`LLM_PROVIDER` 環境変数で切替。`complete({system, user, schema})` が Zod 検証付きで JSON を返す。
 

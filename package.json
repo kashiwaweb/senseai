@@ -21,6 +21,8 @@
     "db:seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.94.0",
+    "@google/genai": "^1.52.0",
     "@libsql/client": "^0.17.3",
     "@nuxt/eslint": "^1.15.2",
     "@nuxt/fonts": "^0.14.0",
@@ -30,7 +32,8 @@
     "nuxt": "^4.4.4",
     "nuxt-auth-utils": "^0.5.29",
     "vue": "^3.5.33",
-    "vue-router": "^5.0.6"
+    "vue-router": "^5.0.6",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "drizzle-kit": "^0.31.10",
