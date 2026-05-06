@@ -1,6 +1,11 @@
 import { sql } from 'drizzle-orm'
 import { index, integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
+// JSON カラムの型は shared/schemas で定義した Zod から推論する。
+// drizzle-kit / tsx 配下で動くため `#shared/*` エイリアスではなく相対 import。
+import type { DiagnosisData } from '../../shared/schemas/diagnosis'
+import type { TopProfileData } from '../../shared/schemas/topProfile'
+
 // architecture.md §5 のデータモデルを Drizzle で表現。
 //
 // 規約:
@@ -84,8 +89,8 @@ export const topProfile = sqliteTable(
     // 元になった Session ID 群（JSON 配列で保存）
     sourceSessionIds: text('source_session_ids', { mode: 'json' }).$type<string[]>().notNull(),
     // 「型」本体 JSON（ai-design.md §4.3 のスキーマ）
-    // 厳密な型は shared/schemas/topProfile.ts (W1-12) で Zod 定義
-    profileJson: text('profile_json', { mode: 'json' }).$type<unknown>().notNull(),
+    // shared/schemas/topProfile.ts の Zod スキーマから推論された型を適用
+    profileJson: text('profile_json', { mode: 'json' }).$type<TopProfileData>().notNull(),
     llmModel: text('llm_model').notNull(),
     promptVersion: text('prompt_version').notNull(),
     createdAt: integer('created_at')
@@ -109,8 +114,8 @@ export const diagnosis = sqliteTable(
       .notNull()
       .references(() => topProfile.id, { onDelete: 'cascade' }),
     // 診断結果 JSON（ai-design.md §5.3 のスキーマ）
-    // 厳密な型は shared/schemas/diagnosis.ts (W1-12) で Zod 定義
-    resultJson: text('result_json', { mode: 'json' }).$type<unknown>().notNull(),
+    // shared/schemas/diagnosis.ts の Zod スキーマから推論された型を適用
+    resultJson: text('result_json', { mode: 'json' }).$type<DiagnosisData>().notNull(),
     llmModel: text('llm_model').notNull(),
     promptVersion: text('prompt_version').notNull(),
     createdAt: integer('created_at')

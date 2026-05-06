@@ -58,7 +58,7 @@
 
   `server/lib/llm.ts` に `LLMProvider` interface を定義し、Gemini 2.5 Flash 実装と Claude（Haiku/Sonnet）実装を作成。`LLM_PROVIDER` 環境変数で切替。`complete({system, user, schema})` が Zod 検証付きで JSON を返す。
 
-- [ ] **W1-12: TopProfile / Diagnosis の Zod スキーマ定義**
+- [x] **W1-12: TopProfile / Diagnosis の Zod スキーマ定義**
 
   ai-design.md §4.3 / §5.3 のスキーマを `shared/schemas/topProfile.ts` / `diagnosis.ts` に Zod で実装。LLM 出力検証と TS 型推論の両方に使用。
 
