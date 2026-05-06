@@ -7,6 +7,8 @@ const password = ref('')
 const error = ref<string | null>(null)
 const loading = ref(false)
 
+const { fetch: refreshSession } = useUserSession()
+
 async function login() {
   error.value = null
   loading.value = true
@@ -15,6 +17,10 @@ async function login() {
       method: 'POST',
       body: { password: password.value },
     })
+    // クッキーは付いたが、クライアント側の useUserSession キャッシュはまだ未ログイン状態。
+    // navigateTo('/') の前にセッションを取り直さないと auth.global ミドルウェアが
+    // loggedIn=false と誤判定し、/login に跳ね返されることがある。
+    await refreshSession()
     await navigateTo('/')
   } catch {
     // 仕様 (screens.md §3.1): エラー時は「パスワードが違います」のみ表示
