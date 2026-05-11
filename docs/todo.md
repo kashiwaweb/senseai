@@ -66,7 +66,7 @@
 
   `server/lib/prompts/phase1_v1.ts` にプロンプト本体・バージョン文字列・JSON Schema 注入処理を実装。プロンプト出力時に `prompt_version` を返し、TopProfile レコードに記録できるようにする。
 
-- [ ] **W1-14: 手動テキスト投入で 7 ステップ分析が動く最小 E2E**
+- [x] **W1-14: 手動テキスト投入で 7 ステップ分析が動く最小 E2E**
 
   テキスト直接入力を受け取り、フェーズ①プロンプトで Gemini を叩いて TopProfile JSON を返す `POST /api/profiles/generate` の最小版。UI からは「型を生成」ボタンで叩ければ OK。**W1 のゴール**。
 
