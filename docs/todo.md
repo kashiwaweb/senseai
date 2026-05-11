@@ -62,7 +62,7 @@
 
   ai-design.md §4.3 / §5.3 のスキーマを `shared/schemas/topProfile.ts` / `diagnosis.ts` に Zod で実装。LLM 出力検証と TS 型推論の両方に使用。
 
-- [ ] **W1-13: フェーズ①プロンプト v1 + バージョン管理機構**
+- [x] **W1-13: フェーズ①プロンプト v1 + バージョン管理機構**
 
   `server/lib/prompts/phase1_v1.ts` にプロンプト本体・バージョン文字列・JSON Schema 注入処理を実装。プロンプト出力時に `prompt_version` を返し、TopProfile レコードに記録できるようにする。
 
