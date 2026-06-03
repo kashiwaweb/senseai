@@ -78,7 +78,7 @@
 
   R2 バケット作成、`R2_*` 環境変数を設定。`@aws-sdk/client-s3` で署名付き URL 生成・PUT/GET 用のラッパを `server/lib/r2.ts` に実装。
 
-- [ ] **W2-02: 音声アップロード API（署名付き URL 方式）**
+- [x] **W2-02: 音声アップロード API（署名付き URL 方式）**
 
   `POST /api/sessions/upload-url`（署名付き URL を返す）+ ブラウザから R2 へ直接 PUT する方式を採用し Vercel の body サイズ制限を回避。完了通知で `audio_key` を確定。
 
