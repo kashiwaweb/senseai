@@ -74,7 +74,7 @@
 
 ゴール: mp3/m4a をアップして自動で会話テキスト化。
 
-- [ ] **W2-01: Cloudflare R2 セットアップ + S3 互換 SDK 統合**
+- [x] **W2-01: Cloudflare R2 セットアップ + S3 互換 SDK 統合**
 
   R2 バケット作成、`R2_*` 環境変数を設定。`@aws-sdk/client-s3` で署名付き URL 生成・PUT/GET 用のラッパを `server/lib/r2.ts` に実装。
 
