@@ -28,3 +28,6 @@ local.db
 local.db-journal
 local.db-shm
 local.db-wal
+
+# Local data (smoke test outputs, scratch files)
+local-data/

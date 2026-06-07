@@ -19,6 +19,27 @@ export type TranscribeResult = {
 const MODEL = 'whisper-large-v3-turbo'
 const MAX_FILE_SIZE_BYTES = 25 * 1024 * 1024 // Groq Whisper 制約
 
+// Whisper 日本語モデルは無音 / 不明瞭な区間で YouTube 由来の定型句を
+// 幻聴することが知られている (冒頭・末尾とも)。これらを除去する。
+// 完全一致でなく、繰り返しや句読点も吸収するため正規表現を使う。
+const WHISPER_HALLUCINATIONS = [
+  'ご視聴ありがとうございました',
+  'ご覧いただきありがとうございました',
+  'チャンネル登録お願いします',
+  'ご視聴いただきありがとうございました',
+  'お待ちください',
+]
+const HALLUCINATION_RE = new RegExp(
+  `(${WHISPER_HALLUCINATIONS.join('|')})[\\s。、,.!?]*`,
+  'g',
+)
+
+function stripWhisperHallucination(text: string): string {
+  // 冒頭・末尾に集中して出現するため、まず全体から除去 → 前後 trim。
+  // 文中の同フレーズも除去するが、実発話で同文言が出る確率は極めて低いので問題なし。
+  return text.replace(HALLUCINATION_RE, '').trim()
+}
+
 export async function transcribeAudioFromR2(audioKey: string): Promise<TranscribeResult> {
   const { groqApiKey } = useRuntimeConfig()
   if (!groqApiKey) {
@@ -63,7 +84,7 @@ export async function transcribeAudioFromR2(audioKey: string): Promise<Transcrib
   }
 
   return {
-    transcript: raw.text ?? '',
+    transcript: stripWhisperHallucination(raw.text ?? ''),
     durationSec: typeof raw.duration === 'number' ? Math.round(raw.duration) : null,
     language: raw.language ?? null,
     model: MODEL,

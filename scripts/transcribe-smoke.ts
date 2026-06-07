@@ -12,6 +12,9 @@
 //
 // Nuxt の useRuntimeConfig() は使わず process.env から直接読む簡易版。
 
+import { mkdir, writeFile } from 'node:fs/promises'
+import { dirname } from 'node:path'
+
 import {
   GetObjectCommand,
   S3Client,
@@ -100,4 +103,10 @@ console.log('-----')
 console.log(raw.text.slice(0, 500))
 console.log('-----')
 
+// 全文を local-data/ 配下に保存 (gitignore 済み)。
+// キーの '/' は '_' に置換してフラットなファイル名にする。
+const outPath = `local-data/transcripts/${audioKey.replace(/\//g, '_')}.txt`
+await mkdir(dirname(outPath), { recursive: true })
+await writeFile(outPath, raw.text, 'utf8')
 console.log(`\n文字起こし成功 🎉 全長 ${raw.text.length} 文字`)
+console.log(`     全文を保存: ${outPath}`)

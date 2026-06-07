@@ -82,7 +82,7 @@
 
   `POST /api/sessions/upload-url`（署名付き URL を返す）+ ブラウザから R2 へ直接 PUT する方式を採用し Vercel の body サイズ制限を回避。完了通知で `audio_key` を確定。
 
-- [ ] **W2-03: Groq Whisper（Large-v3-Turbo）統合**
+- [x] **W2-03: Groq Whisper（Large-v3-Turbo）統合**
 
   `server/lib/transcribe.ts` に Groq SDK ラッパを実装。R2 から音声を取得して Whisper に渡し、`transcript` と `duration_sec` を返す。25MB / 30 分制約はバリデーションでエラーを返す（チャンク分割は将来）。
 
