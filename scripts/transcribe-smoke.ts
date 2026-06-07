@@ -89,24 +89,46 @@ const result = await groq.audio.transcriptions.create({
 })
 const elapsed = ((Date.now() - t0) / 1000).toFixed(1)
 
+type WhisperSegment = { id: number; start: number; end: number; text: string }
 const raw = result as unknown as {
   text: string
   duration?: number
   language?: string
+  segments?: WhisperSegment[]
 }
 
 console.log(`[3/3] 結果 (処理時間 ${elapsed}s)`)
 console.log(`     duration: ${raw.duration ?? '?'} sec`)
 console.log(`     language: ${raw.language ?? '?'}`)
+console.log(`     segments: ${raw.segments?.length ?? 0} 個`)
 console.log(`     transcript (先頭 500 文字):`)
 console.log('-----')
 console.log(raw.text.slice(0, 500))
 console.log('-----')
 
-// 全文を local-data/ 配下に保存 (gitignore 済み)。
+// 全文 (.txt) + メタデータ + segments (.segments.json) を local-data/ に保存。
 // キーの '/' は '_' に置換してフラットなファイル名にする。
-const outPath = `local-data/transcripts/${audioKey.replace(/\//g, '_')}.txt`
+const baseName = audioKey.replace(/\//g, '_')
+const outPath = `local-data/transcripts/${baseName}.txt`
+const segmentsPath = `local-data/transcripts/${baseName}.segments.json`
+
 await mkdir(dirname(outPath), { recursive: true })
 await writeFile(outPath, raw.text, 'utf8')
+
+const segmentsData = {
+  audioKey,
+  durationSec: typeof raw.duration === 'number' ? Math.round(raw.duration) : null,
+  language: raw.language ?? null,
+  model: 'whisper-large-v3-turbo',
+  segments: (raw.segments ?? []).map((s) => ({
+    id: s.id,
+    start: s.start,
+    end: s.end,
+    text: s.text,
+  })),
+}
+await writeFile(segmentsPath, JSON.stringify(segmentsData, null, 2), 'utf8')
+
 console.log(`\n文字起こし成功 🎉 全長 ${raw.text.length} 文字`)
-console.log(`     全文を保存: ${outPath}`)
+console.log(`     全文: ${outPath}`)
+console.log(`     セグメント: ${segmentsPath}`)
